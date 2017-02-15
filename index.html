@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>BVAccel - Code Standards</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <header class="masthead section">
+      <a class="straight-flexin" href="http://bvaccel.com">
+        <div class="logo"><span>B</span><span>V</span>Accel</div>
+      </a>
+      <h1 class="document-heading straight-flexin"><span>Code</span><span>Standards</span></h1>
+    </header>
+    <section class="table-of-contents section" id="table-of-contents">
+      <h2 class="section-heading">Table of Contents</h2>
+      <div class="general-topics">
+        <a href="#general">
+          <h3 class="table-of-contents-heading">General</h3>
+        </a>
+        <ul>
+          <li><a href="#general-overview">Overview</a></li>
+          <li><a href="#general-development-principles">Development Principles</a></li>
+          <li><a href="#general-whitespace">Whitespace</a></li>
+          <li><a href="#general-comments">Comments</a></li>
+          <li><a href="#general-readability">Readability</a></li>
+          <li><a href="#general-separation-of-concerns">Separation of Concerns</a></li>
+          <li class="notyet">Performance</li>
+          <li class="notyet">File Structure</li>
+        </ul>
+      </div>
+      <div class="html-topics">
+        <a href="#html">
+          <h3 class="table-of-contents-heading">HTML/Liquid</h3>
+        </a>
+        <ul>
+          <li><a href="#html-syntax">Syntax</a></li>
+          <li><a href="#html-attribute-order">Attribute Order</a></li>
+          <li><a href="#html-reducing-markup">Reducing Markup</a></li>
+          <li><a href="#html-boolean-attributes">Boolean Attributes</a></li>
+          <li><a href="#html-liquid">Liquid</a></li>
+        </ul>
+      </div>
+      <div class="css-topics">
+        <a href="#css">
+          <h3 class="table-of-contents-heading">(S)CSS</h3>
+        </a>
+        <ul>
+          <li><a href="#css-overview">Overview</a></li>
+          <li><a href="#css-syntax">Syntax</a></li>
+          <li><a href="#css-frameworks-and-patterns">Frameworks and Patterns</a></li>
+          <li><a href="#css-declaration-order">Declaration Order</a></li>
+          <li><a href="#css-relative-vs-absolute">Relative vs. Absolute Units</a></li>
+          <li><a href="#css-shorthand-notation">Shorthand Notation</a></li>
+          <li><a href="#css-scss-nesting">SCSS Nesting</a></li>
+        </ul>
+      </div>
+      <div class="javascript-topics">
+        <a href="#javascript">
+          <h3 class="table-of-contents-heading">JavaScript</h3>
+        </a>
+        <ul>
+          <li><a href="#javascript-syntax">Syntax</a></li>
+          <li><a href="#javascript-modules">Modules</a></li>
+          <li><a href="#javascript-true-false">True / False Values</a></li>
+          <li class="notyet">jQuery</li>
+        </ul>
+      </div>
+    </section>
+    <main class="the-rules">
+      <section class="general section" id="general">
+        <h2 class="section-heading"><a class="permalink" href="#general">#</a>General</h2>
+        <figure class="section-item full-width" id="general-overview">
+          <h3 class="item-heading"><a class="permalink" href="#general-overview">#</a>Overview</h3>
+          <p>This is a living document and new ideas are always welcome and encouraged. If you have an idea that you think would be an improvement, please feel free to contribute.</p>
+          <p>The following document outlines best practices and provides a style guide for writing front end code. It barrows heavily from existing and widely adopted practices, but is not meant to be the authority on how to write "correct" front end code. The goal of this document is to provide a set of basic guidelines to follow when developing in order to ensure a level of code consistency exists across all projects, and that best practices are being followed.</p>
+          <p>By maintaining consistency in coding styles and conventions, we can ease the burden of legacy code maintenance, and mitigate risk of breakage in the future. By adhering to best practices, we ensure optimized page loading, performance and maintainable code.</p>
+        </figure>
+        <figure class="section-item full-width" id="general-development-principles">
+          <h3 class="item-heading"><a class="permalink" href="#general-development-principles">#</a>Development Principles</h3>
+          <p class="straight-flexin">While it should be the aim of everyone to follow these guidelines as closely as possible, if ever in doubt, keep these core principles in mind:</p>
+          <ul>
+            <li>The entire code base should look like one person wrote it</li>
+            <li>Leave code in a better state than you found it</li>
+            <li>Keep it simple</li>
+            <li>Be consistent</li>
+            <li>Reuse as much as possible</li>
+          </ul>
+        </figure>
+        <figure class="section-item" id="general-whitespace">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#general-whitespace">#</a>Whitespace</h3>
+            <ul>
+              <li>Use soft indents (spaces)</li>
+              <li>Never mix spaces and tabs</li>
+              <li>One indent == Two spaces</li>
+              <li>Set editor to insert spaces with tab key</li>
+              <li>Nested elements should be indented once</li>
+            </ul>
+            <p><span class="bold">Tip: </span>Configure your editor to "show invisibles" or to automatically remove end-of-line whitespace.</p>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="tag">&lt;ul&gt;</span>
+&bullet;&bullet;<span class="tag">&lt;li&gt;</span>heysup<span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+
+<span class="selector">.my-class</span> {
+&bullet;&bullet;<span class="property">width</span>: <span class="property-value">25rem</span>;
+}
+</code></pre>
+        </figure>
+        <figure class="section-item" id="general-comments">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#general-comments">#</a>Comments</h3>
+            <p>Use <span class="bold">HTML</span> comments sparingly as they tend to throw off indentation and increase document length. HTML comments can be useful for indicating when a particular block of markup is ending or for "turning off" unruly sections of markup.</p>
+            <p>With the rise of preprocessors and build tools, <span class="bold">(S)CSS</span> comments should be plentiful, and always written using the // inline style  stripped at compile time. Development shouldn't ever be done in compiled code, so there's no reason for having comments persist.</p>
+            <p>The same idea goes for <span class="bold">JavaScript.</span> Since production code will be concatenated and minified, take time to describe components, how they work, their limitations, and the way they are constructed. Additionally, be sure to leave TODO: comments only for things that <span class="italic">have</span> to happen but can't be done immediately.</p>
+            <p>Well commented code is extremely important. Don't leave others in the team guessing as to the purpose of uncommon or non-obvious code.</p>
+          </figcaption>
+<pre class="item-example"><code>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span><span class="comment">&lt;!-- end .container --&gt;</span>
+<span class="tag">&lt;/div&gt;</span><span class="comment">&lt;!-- end .wrapper --&gt;</span>
+
+<span class="comment">&lt;!--
+  &lt;li class="problem"&gt;&lt;li&gt;
+--&gt;</span>
+
+<span class="selector">.your-class</span> {
+  <span class="comment">// destroy jquery inline style</span>
+  <span class="property">display</span>:<span class="property-value"> none !important</span>;
+}
+
+<span class="comment">// --------------------
+// This is my component.
+//
+// There are many like it, but
+// this one is mine.
+//
+// This description is ideal for
+// detailed explanations and
+// documentation.
+//</span>
+</code></pre>
+        </figure>
+        <figure class="section-item full-width" id="general-readability">
+          <h3 class="item-heading"><a class="permalink" href="#general-readability">#</a>Readability</h3>
+          <p>Readable, maintainable code is always better than unreadable code, no matter the performance gains. Always choose readability. If your site is truly suffering from performance issues, first investigate the usual suspects, like image compression or number of requests, before compromising readability. As mentioned earlier,  with the advent of build tools and preprocessors, in addition to compression from gziping, code can now "suffer" from being overly verbose.</p>
+          <h4 class="further-reading straight-flexin">Further Reading:</h4>
+          <ul>
+            <li><a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/#a-note-on-raw-file-size-and-http-compression">About HTML semantics and front-end architecture</a></li>
+          </ul>
+        </figure>
+        <figure class="section-item" id="general-separation-of-concerns">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#general-separation-of-concerns">#</a>Separation of Concerns</h3>
+            <p>Strictly keep structure (markup), presentation (styling), and behavior (scripting) apart, and try to keep the interaction between the three to an absolute minimum.</p>
+            <p>That is, make sure documents and templates contain only HTML and HTML that is solely serving structural purposes. Move everything presentational into style sheets, and everything behavioral into scripts.</p>
+            <p>In addition, keep the contact area as small as possible by linking as few style sheets and scripts as possible from documents and templates.</p>
+            <p>Separating structure from presentation from behavior is important for maintenance reasons. It is always more expensive to change HTML documents and templates than it is to update style sheets and scripts.</p>
+            <h4 class="further-reading">Further Reading:</h4>
+            <ul>
+              <li><a href="http://philipwalton.com/articles/decoupling-html-css-and-javascript/">Decoupling Your HTML, CSS, and JavaScript</a></li>
+            </ul>
+            <h4 class="further-reading">Extra Credit:</h4>
+            <ul>
+              <li><a href="http://www.w3.org/TR/2013/WD-components-intro-20130606/">Web Components</a></li>
+            </ul>
+            <p><span class="bold">N.B. Due to the way that Shopify themes are built and the nature of our work, absolutely adhering to this idea is next to impossible.</span></p>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="comment">&lt;!-- Booooo! --&gt;</span>
+<span class="tag">&lt;b&gt;</span>Make me bold pls<span class="tag">&lt;/b&gt;</span>
+
+<span class="comment">&lt;!-- Noooooo --&gt;</span>
+<span class="tag">&lt;a <span class="attribute">onclick=</span><span class="attribute-value">"alert('heysup')"</span>&gt;</span>hi<span class="tag">&lt;/a&gt;</span>
+</code></pre>
+        </figure>
+      </section>
+      <section class="html section" id="html">
+        <h2 class="section-heading"><a class="permalink" href="#html">#</a>HTML / Liquid</h2>
+        <figure class="section-item" id="html-syntax">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#html-syntax">#</a>HTML - Syntax</h3>
+            <ul>
+              <li>Use only lowercase (except where applicable)</li>
+              <li>Always use double quotes</li>
+              <li>Use HTML5 doctype</li>
+              <li>Don't omit optional HTML5 closing tags</li>
+              <li>Enforce IE compatibility mode</li>
+              <li>Include viewport meta tag</li>
+            </ul>
+            <h4 class="further-reading">Further Reading:</h4>
+            <ul>
+              <li><a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">IE Compatibility Mode</a></li>
+              <li><a href="http://css-tricks.com/snippets/html/responsive-meta-tag/">Responsive Meta Tag</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="doctype">&lt;!doctype <span class="attribute">lang=</span><span class="attribute-value">"en-us"</span>&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta<span class="attribute"> charset=</span><span class="attribute-value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;meta<span class="attribute"> http-equiv=</span><span class="attribute-value">"X-UA-Compatible"</span> <span class="attribute">content=</span><span class="attribute-value">"IE=Edge"</span>&gt;</span>
+    <span class="tag">&lt;meta<span class="attribute"> name=</span><span class="attribute-value">"viewport"</span> <span class="attribute">content=</span><span class="attribute-value">"width=device-width, initial-scale=1"</span>&gt;</span>
+    <span class="tag">&lt;title&gt;</span>My Page Title<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1 <span class="attribute">class=</span><span class="attribute-value">"page-title"</span>&gt;</span>My Page<span class="tag">&lt;/h1&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+</code></pre>
+        </figure>
+        <figure class="section-item" id="html-attribute-order">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#html-attribute-order">#</a>Attribute Order</h3>
+            <p>HTML attributes should come in this particular order for easier reading of code:</p>
+            <ul>
+              <li><code class="attribute-value">class</code></li>
+              <li><code class="attribute-value">id</code></li>
+              <li><code class="attribute-value">src</code>, <code class="attribute-value">for</code>, <code class="attribute-value">type</code>, <code class="attribute-value">href</code>, <code class="attribute-value">value</code></li>
+              <li><code class="attribute-value">title</code>, <code class="attribute-value">alt</code></li>
+              <li><code class="attribute-value">data-*</code></li>
+              <li><code class="attribute-value">aria-*</code>, <code class="attribute-value">role</code></li>
+            </ul>
+            <p><code class="attribute-value">class</code> and <code class="attribute-value">id</code> are by far the most commonly used attributes, so they come before everyone else. Classes make for great reusable components, so they come before first. Ids are more specific and should be used sparingly (e.g., for in-page bookmarks), so they come second.</p>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="tag">&lt;a <span class="attribute">class=</span><span class="attribute-value">"..."</span> <span class="attribute">id=</span><span class="attribute-value">"..."</span> <span class="attribute">href=</span><span class="attribute-value">"#burger"</span>&gt;</span>
+  My Favorite Food is a Hamburger
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="tag">&lt;a <span class="attribute">class=</span><span class="attribute-value">"modal-trigger"</span> <span class="attribute">data-modal-name=</span><span class="attribute-value">"warning"</span>&gt;</span>
+    Beware!
+<span class="tag">&lt;/a&gt;</span>
+
+<span class="tag">&lt;input <span class="attribute">class=</span><span class="attribute-value">"form-control"</span> <span class="attribute">type=</span><span class="attribute-value">"checkbox"</span>&gt;</span>
+
+<span class="tag">&lt;img <span class="attribute">src=</span><span class="attribute-value">"images/a-monkey.png"</span> <span class="attribute">alt=</span><span class="attribute-value">"Frank"</span>&gt;</span>
+</code></pre>
+        </figure>
+        <figure class="section-item" id="html-reducing-markup">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#html-reducing-markup">#</a>Reducing Markup</h3>
+            <p>Whenever possible, avoid superfluous parent elements when writing HTML. Many times this requires iteration and refactoring, but produces less HTML. Strive to maintain HTML standards and semantics, but not at the expense of practicality. Use the least amount of markup with the fewest intricacies whenever possible.</p>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="comment">&lt;!-- Not so great --&gt;</span>
+<span class="tag">&lt;span class=</span><span class="attribute-value">"avatar"</span>&gt;</span>
+  <span class="tag">&lt;img src=<span class="attribute-value">"..."</span>&gt;
+<span class="tag">&lt;/span&gt;</span>
+
+<span class="comment">&lt;!-- Better --&gt;
+<span class="tag">&lt;img <span class="attribute">class=</span><span class="attribute-value">"avatar"</span> <span class="attribute">src=</span><span class="attribute-value">"..."</span>&gt;</span>
+</code></pre>
+        </figure>
+        <figure class="section-item" id="html-boolean-attributes">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#html-boolean-attributes">#</a>Boolean Attributes</h3>
+            <p>A boolean attribute is one that needs no declared value. XHTML required you to declare a value, but HTML5 has no such requirement.</p>
+            <blockquote class="italic">The presence of a boolean attribute on an element represents the true value, and the absence of the attribute represents the false value.</blockquote>
+            <p>If you need to store data in a DOM node, use a data-attribute with a sensible name.</p>
+            <h4 class="further-reading">Further Reading:</h4>
+            <ul>
+              <li><a href="https://html.spec.whatwg.org/multipage/infrastructure.html#boolean-attributes">WhatWG section on boolean attributes</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="tag">&lt;input <span class="attribute">type=</span><span class="attribute-value">"text"</span> <span class="attribute">disabled</span>&gt;</span>
+
+<span class="tag">&lt;input <span class="attribute">type=</span><span class="attribute-value">"checkbox"</span> <span class="attribute">value=</span><span class="attribute-value">"1"</span> <span class="attribute">checked</span>&gt;</span>
+
+<span class="tag">&lt;a <span class="attribute">class=</span><span class="attribute-value">"modal-trigger"</span> <span class="attribute">data-modal-name=</span><span class="attribute-value">"quickshop"</span>&gt;</span>
+  Click Here to Shop Quick!
+<span class="tag">&lt;/a&gt;</span>
+</code></pre>
+        </figure>
+        <figure class="section-item" id="html-liquid">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#html-liquid">#</a>Liquid</h3>
+            <ul>
+              <li>Make use of whitespace to improve readability</li>
+              <li>Use HTML comments instead of liquid comments for consistency</li>
+              <li>Use snakecase (?)</li>
+              <li>??</li>
+              <li>??????????????????????????????????</li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+{% if user.name == 'ralph' %}
+  ralph pls go
+{% endif %}
+
+{{ my_output_tag }}
+
+{{ im_also_known_as_an_object }}
+
+{{ w_filter | append: '.jpg' }}
+<span class="comment">&lt;!-- outputs w_filter.jpg --&gt;</span>
+</code></pre>
+        </figure>
+      </section>
+      <section class="css section" id="css">
+        <h2 class="section-heading"><a class="permalink" href="#css">#</a>(S)CSS</h2>
+        <figure class="section-item full-width" id="css-overview">
+          <h3 class="item-heading"><a class="permalink" href="#css-overview">#</a>(S)CSS - Overview</h3>
+          <p>If you're not using some sort of preprocessor to write your CSS, you're either doing it our of necessity, or you're a masochist. Come join us writing Sass (specifically the SCSS variety) and take a ride on a wave of the future.</p>
+          <p>A few things to keep in mind when writing styles and their accompanying selectors/HTML hooks:</p>
+          <ul>
+            <li>Avoid using <code class="attribute-value">ids</code> to style content. They're overly specific in regards to selector specificity value and similar to using <code class="attribute-value">!important</code>.</li>
+            <li>On that note, avoid using <code class="attribute-value">!important</code> whenever possible. It can be useful for helping overwrite inline styles applied by jQuery and whatnot, but beyond that, it creates styling issues that can be easily avoided.</li>
+            <li>Avoid using overly generic class names for elements that aren't likely to be reused. For example, <code class="attribute">.navigation</code> is ok for styles that are likely to be reused across multiple navigation menus, but when using classes to scope your styles, opt for something like <code class="attribute">.main-navigation</code>.</li>
+            <li>Keep your selector specificity as low as necessary</li>
+            <li>Name things how you would name them</li>
+          </ul>
+          <h4 class="straight-flexin">Further Reading:</h4>
+          <ul>
+            <li><a href="http://css-tricks.com/just-try-and-do-a-good-job/">CSS: Just Try and Do a Good Job</a></li>
+            <li><a href="http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class/">When using IDs can be a pain in the class</a></li>
+            <li><a href="http://snook.ca/archives/html_and_css/understanding_c">Understanding CSS Specificity</a></li>
+            <li><a href="http://css-tricks.com/strategies-keeping-css-specificity-low/">Strategies for Keeping CSS Specificity Low</a></li>
+          </ul>
+        </figure>
+        <figure class="section-item" id="css-syntax">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#css-syntax">#</a>CSS - Syntax</h3>
+            <ul>
+              <li>When grouping selectors, keep individual selectors to a single line.</li>
+              <li>Include one space before the opening brace of declaration blocks for legibility.</li>
+              <li>Place closing braces of declaration blocks on a new line.</li>
+              <li>Include one space after : for each declaration.</li>
+              <li>Each declaration should appear on its own line for more accurate error reporting.</li>
+              <li>End all declarations with a semi-colon. The last declaration's is optional, but your code is more error prone without it.</li>
+              <li>Comma-separated property values should include a space after each comma for easier readability.</li>
+              <li>Lowercase all hex values, e.g., <code class="attribute-value">#fff</code>. Lowercase letters are much easier to discern when scanning a document as they tend to have more unique shapes.</li>
+              <li>Avoid specifying units for zero values, e.g., <code class="attribute-value">margin: 0;</code> instead of <code class="attribute-value">margin: 0px;</code></li>
+              <li>Omit vendor prefixes, as they will be added via. build process</li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="selector">.section-title</span>,
+<span class="selector">[modal-active]</span>,
+<span class="selector">.section-title</span> + <span class="selector">[modal-active]</span> {
+  <span class="property">font-family</span>: <span class="property-value">sans-serif</span>;
+  <span class="property">font-size</span>: <span class="property-value">2.5rem</span>;
+  <span class="property">font-weight</span>: <span class="property-value">600</span>;
+  <span class="property">color</span>: <span class="property-value">rgba(0, 0, 0, 0.7)</span>;
+  <span class="property">text-align</span>: <span class="property-value">center</span>;
+  <span class="property">text-transform</span>: <span class="property-value">uppercase</span>;
+  <span class="property">border</span>: <span class="property-value">1px solid #eee</span>;
+  <span class="property">padding-bottom:</span>: <span class="property-value">0</span>;
+}
+</code></pre>
+        </figure>
+        <figure class="section-item full-width" id="css-frameworks-and-patterns">
+          <h3 class="item-heading"><a class="permalink" href="#css-frameworks-and-patterns">#</a>CSS Frameworks and Patterns</h3>
+          <p>Many exist, and yet they all work in a pretty similar manner. Think about elements on your site as reusable objects/components/blocks/atoms/hamburgers, modify those things, and then reuse them. And while each framework introduces the much needed aspect of structure to (S)CSS, it also comes at the price of additional overhead and self-imposed rules and limits. And while the scale of projects increases, so does the importance of structure an organization increases exponentially, on the opposite end the upfront cost of following a particular framework while working on a smaller site can also feel overbearing.</p>
+          <p class="straight-flexin">Keeping that in mind, our work can be characterized by:</p>
+          <ul>
+            <li>Short life cycles with quick turnover</li>
+            <li>Hard deadlines</li>
+            <li>High complexity in regards to design</li>
+            <li>Low complexity in regards to scale</li>
+            <li>Minimal upkeep and maintenance after completion</li>
+          </ul>
+          <p>After taking each of those factors into consideration, the need to write extremely modular and extendable CSS, on a <span class="italic bold">per project</span> basis, does not jump out as a high priority. Choosing and then religiously adhering to a particular CSS framework may have its benefits, but it also comes with costs. Having said that, writing CSS in a fashion that lends itself to reuse and readability is always preferred over writing CSS in an ad-hoc and spastic manner, so at the very least, it's in our best interest to define some guiding principles to keep in mind when writing CSS.</p>
+          <p>The fact that our sites use templates, lends itself to style reuse. Instead of having to make a cognizant effort to try and reuse styles, a style that's applied in one place on a template will automatically propagate out to every page that uses that template. So while thinking about reusing styles on an individual project basis may seem like cutting a pie with a jackhammer, thinking about all of our projects as mini-parts of one larger Mega-Project and continuing to reuse styles on said Mega-Project, seems like a more approachable idea.</p>
+          <h4 class="further-reading straight-flexin">Further Reading:</h4>
+            <ul>
+              <li><a href="https://smacss.com/">SMCCS</a></li>
+              <li><a href="https://github.com/stubbornella/oocss/wiki">OOCSS</a></li>
+              <li><a href="https://en.bem.info/">BEM</a></li>
+            </ul>
+        </figure>
+        <figure class="section-item" id="css-declaration-order">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#css-declaration-order">#</a>SCSS - Declaration Order</h3>
+            <ul>
+              <li>Local $var first</li>
+              <li>@extend(s) next</li>
+              <li>Regular styles next</li>
+              <li>@Includes next (including media queries)</li>
+              <li>Nested selectors last</li>
+            </ul>
+            <h4 class="further-reading straight-flexin">Further Reading:</h4>
+            <ul>
+              <li><a href="http://css-tricks.com/sass-style-guide/">Sass Style Guide</a></li>
+              <li><a href="http://sass-guidelin.es/">Sass Guidelines</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code><span class="selector">.topbar</span> {
+  $height: <span class="property-value">2.5rem</span>;
+  <span class="selector">@extends font-name</span>;
+  <span class="property">color</span>: $black;
+  <span class="property">line-height</span>: $height;
+  <span class="property">text-align</span>: <span class="property-value">right</span>;
+  <span class="selector">@include mobile</span> {
+    <span class="property">display</span>: <span class="property-value">none</span>;
+  }
+  &<span class="selector">::before</span> {
+    <span class="property">content</span>: <span class="property-value">'•'</span>;
+  }
+  <span class="selector">.active</span> {
+    <span class="property">color</span>: $red-medium;
+  }
+}
+</code></pre>
+        </figure>
+        <figure class="section-item" id="css-relative-vs-absolute">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#css-relative-vs-absolute">#</a>Relative vs. Absolute Units</h3>
+            <p>Arguing over the merits of responsive design vs. pixel perfect design is pointless. In almost every situation, relative units should be used.</p>
+            <p>Relative units include:</p>
+            <ul>
+              <li><code class="attribute-value">%</code></li>
+              <li><code class="attribute-value">rem</code></li>
+              <li><code class="attribute-value">em</code></li>
+              <li><code class="attribute-value">vw</code>*</li>
+              <li><code class="attribute-value">vh</code>*</li>
+              <li><code class="attribute-value">px</code>**</li>
+            </ul>
+            <p>* While <code class="attribute-value">vw</code> and <code class="attribute-value">vh</code> are incredibly powerful and useful units of measurement, they're still not entirely mature and ready for everyday use. There are a few select situations where they can be used with a percentage fallback, but it's advised to hold off using these units until they're ready for widespread use.</p>
+            <p>** Yes, you read that correctly, <code class="attribute-value">px</code> is technically a relative unit, as it's relative to the size of a what a "pixel" is on the viewing device. Because there is so much misinformation and controversy over whether 1px is actually 1px, using <code class="attribute-value">px</code> as a unit of measurement should be avoided at all costs, except for very basic properties, like <code class="attribute-value">border</code>. Instead, we should aim to used forward focused technologies, like <code class="attribute-value">rem</code> and <code class="attribute-value">em</code>, instead of technology shrouded in controversy whose major purpose is seen as legacy device support.</p>
+            <h4 class="further-reading">Further Reading:</h4>
+            <ul>
+              <li><a href="http://www.punkchip.com/wcag-accessibility-checkpoints/">WCAG Accessibility Checkpoints</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+
+</code></pre>
+        </figure>
+        <figure class="section-item" id="css-shorthand-notation">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#css-shorthand-notation">#</a>Shorthand Notation</h3>
+            <p>Strive to limit use of shorthand declarations to instances where you must explicitly set all the available values. Common overused shorthand properties include:</p>
+            <ul>
+              <li><code class="attribute-value">padding</code></li>
+              <li><code class="attribute-value">margin</code></li>
+              <li><code class="attribute-value">font</code></li>
+              <li><code class="attribute-value">background</code></li>
+              <li><code class="attribute-value">border</code></li>
+              <li><code class="attribute-value">border-radius</code></li>
+            </ul>
+            <p>Beware that using shorthand properties sets <span class="italic">all</span> values for a CSS property, whether you specify them or not. For example, <code class="attribute-value">background: red;</code> not only sets the <code class="attribute-value">background-color</code> property, but also:</p>
+            <ul>
+              <li><code class="attribute-value">background-image</code></li>
+              <li><code class="attribute-value">background-position</code></li>
+              <li><code class="attribute-value">background-size</code></li>
+              <li><code class="attribute-value">background-repeat</code></li>
+              <li><code class="attribute-value">background-origin</code></li>
+              <li><code class="attribute-value">background-style</code></li>
+              <li><code class="attribute-value">background-clip</code></li>
+            </ul>
+            <p>to their initial values, overwriting any of these values set earlier in the declaration order.</p>
+            <p>Often times we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.</p>
+            <h4 class="further-reading straight-flexin">Further Reading:</h4>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">MDN Shorthand Properties</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+
+</code></pre>
+        </figure>
+        <figure class="section-item full-width" id="css-scss-nesting">
+            <h3 class="item-heading"><a class="permalink" href="#css-scss-nesting">#</a>SCSS Nesting</h3>
+            <p>The best way of demonstrating the dangers of over using nested selectors is with an example. If the example doesn't scare you away from overusing nested selectors, I don't know what will.</p>
+<pre><code>
+<span class="attribute-value">body</span> {
+  <span class="attribute-value">div.container</span> {
+    <span class="attribute-value">div.content</span> {
+      <span class="attribute-value">div.articles</span> {
+        <span class="attribute-value">& > div.post</span> {
+          <span class="attribute-value">div.title</span> {
+            <span class="attribute-value">h1</span> {
+              <span class="attribute-value">a</span> {
+              }
+            }
+          }
+          <span class="attribute-value">div.content</span> {
+            <span class="attribute-value">p { ...</span> }
+            <span class="attribute-value">ul</span> {
+              <span class="attribute-value">li { ...</span> }
+            }
+          }
+          <span class="attribute-value">div.author</span> {
+            <span class="attribute-value">a.display</span> {
+              <span class="attribute-value">img { ...</span> }
+            }
+            <span class="attribute-value">h4</span> {
+              <span class="attribute-value">a { ...</span> }
+            }
+            <span class="attribute-value">p</span> {
+              <span class="attribute-value">a { ...</span> }
+            }
+            <span class="attribute-value">ul</span> {
+              <span class="attribute-value">li { ...</span> }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+<span class="bold">turns into ..</span>
+
+<span class="attribute-value">body</span> { ... }
+<span class="attribute-value">body div.content div.container</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.title</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.title h1</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.title h1 a</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.content</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.content p</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.content ul</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.content ul li</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author a.display</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author a.display img</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author h4</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author h4 a</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author p</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author p a</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author ul</span> { ... }
+<span class="attribute-value">body div.content div.container div.articles > div.post div.author ul li</span> { ... }
+</code></pre>
+            <h4 class="further-reading straight-flexin">Further Reading:</h4>
+            <ul>
+              <li><a href="http://thesassway.com/beginner/the-inception-rule">Nested selectors: the inception rule</a></li>
+              <li><a href="http://thesassway.com/intermediate/avoid-nested-selectors-for-more-modular-css">Avoid nested selectors for more modular CSS</a></li>
+            </ul>
+
+        </figure>
+
+      </section>
+      <section class="javascript section" id="javascript">
+        <h2 class="section-heading"><a class="permalink" href="#javascript">#</a>JavaScript</h2>
+        <figure class="section-item" id="javascript-syntax">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#javascript-syntax">#</a>Syntax</h3>
+            <ul>
+              <li>Use <code class="attribute-value">var</code> for all variable declarations</li>
+              <li>Variable names are camelCase</li>
+              <li>Module/Class names are PascalCase</li>
+              <li>Constants are UPPERCASE and snake_case</li>
+              <li>Always use semicolons; don't rely on automatic insertion</li>
+              <li>Don't use function declarations within blocks</li>
+              <li>Avoid eval() at all costs!</li>
+              <li>Use <code class="attribute-value">for...in</code> loops with objects only</li>
+              <li>Use <code class="attribute-value">for</code> loops with arrays</li>
+              <li>Opt for concatenation over multiline strings</li>
+              <li>Use array and object literals over constructors</li>
+              <li>Ternary abuse (within reason) is encouraged</li>
+            </ul>
+            <p>Most of these things will become either: forced upon you by way of jslint, or second nature, and as with everything, exceptions are more than ok, just be vigilant about documenting those acceptations as extensively as required.</p>
+          </figcaption>
+<pre class="item-example"><code>
+<span class="comment">// Things that are okay:</span>
+<span class="doctype">var i = 1;
+var n = 2;
+var myVar = 'heysup';
+var OLD_FAITHFUL = true;
+(function(ModuleName, $, undefined) {
+  ...
+}(...));
+var goodParagraph = 'hi, im a really' +
+                 long string that' +
+                 happens to span' +
+                 over a number' +
+                 of lines';
+direction === 'next' ? i++ : i--;</span>
+
+<span class="comment">// Things that are not okay:</span>
+<span class="attribute-value">x = 'whatever'
+if (x) {
+  function foo() {}
+}
+eval("2 + 2");
+for (var key in [0, true, 'hey', undefined, 5000]) {...}
+var badParagraph = 'hi, im a really \
+                 long string that \
+                 happens to span \
+                 over a number \
+                 of lines';</span>
+</code></pre>
+        </figure>
+        <figure class="section-item" id="javascript-modules">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#javascript-modules">#</a>Modules</h3>
+            <p></p>
+            <h4 class="further-reading">Further Reading</h4>
+            <ul>
+              <li><a href="https://github.com/BVAccel/Module-Example">Example Modules</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+
+</code></pre>
+        </figure>
+        <figure class="section-item" id="javascript-true-false">
+          <figcaption class="item-definition">
+            <h3 class="item-heading"><a class="permalink" href="#javascript-true-false">#</a>True/False Values</h3>
+            <p>JavaScript can some (seemingly) strange tendencies.</p>
+            <p>Everything in JavaScript has an inherent true/false value, and for the most part, it's obvious what's a truthy value and what's a falsy value.</p>
+            <p>The following values evaluate to false</p>
+            <ul>
+              <li><code><span class="attribute-value">false</span></code></li>
+              <li><code><span class="attribute-value">null</span></code></li>
+              <li><code><span class="attribute-value">undefined</span></code></li>
+              <li><code><span class="attribute-value">0</span></code> (number zero)</li>
+              <li><code><span class="attribute-value">''</span></code> (empty string)</li>
+              <li><code><span class="attribute-value">NaN</span></code> (not a number)</li>
+            </ul>
+            <p>while all other values evaluate to true.</p>
+            <p>The problem with this is that it can lead to some really strange situations that are worth being aware of. For example, the following values</p>
+            <ul>
+              <li><code><span class="doctype">'false'</span></code></li>
+              <li><code><span class="doctype">'0'</span></code></li>
+              <li><code><span class="doctype">[]</span></code></li>
+              <li><code><span class="doctype">{}</span></code></li>
+            </ul>
+            <p>all evalueate to true. That means the following expressions:</p>
+            <ul>
+              <li><code>true === 'false'</code></li>
+              <li><code>true === '0'</code></li>
+              <li><code>true === []</code></li>
+              <li><code>true === {}</code></li>
+            </ul>
+            <p>All evaluate to <span class="doctype">true</span>.</p>
+            <p>It's also important to understand the different between == and ===, and their significance and acceptable uses. Triple equals (===) checks first if both values are equal, and then if those values are of the same type. Double equals (==) performs type conversion before checking if the values are equal, and as a result, evaluates to true more often than triple equals.</p>
+            <ul>
+              <li><code>2 == '2'</code>  // true</li>
+              <li><code>2 === '2'</code>  // false</li>
+            </ul>
+            <p>There's a time and a place to use each comparison operator, but as a rule of thumb, try to use triple equals as much as possible.</p>
+            <h4 class="further-reading">Further Reading/Watching:</h4>
+            <ul>
+              <li><a href="http://adripofjavascript.com/blog/drips/truthy-and-falsy-values-in-javascript.html">Truthy and Falsy
+              Values in JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">Equality comparisons and sameness</a></li>
+              <li><a href="https://www.destroyallsoftware.com/talks/wat">Wat</a></li>
+            </ul>
+          </figcaption>
+<pre class="item-example"><code>
+
+</code></pre>
+        </figure>
+      </section>
+    </main>
+    <footer class="page-footer">
+      <div class="inspiration">(Heavily) Inspired by <a href="http://codeguide.co/">Code Guide by @mdo</a>.</div>
+      <div class="author"><a href="http://twitter.com/tshamz">@tshamz</a> made this page using only his good looks and charm.</div>
+      <div class="copyright">Open sourced under the MIT License. &copy; 2015.</div>
+      <a class="straight-flexin" href="http://bvaccel.com">
+        <div class="logo"><span>B</span><span>V</span>Accel</div>
+      </a>
+    </footer>
+  </body>
+</html>
